@@ -13,7 +13,7 @@ $navbar-default-bg: #073b15;
   height: 300px;
 }
 
-.jumbotron h1, h2 {
+.jumbotron h1 {
   color: #ffffff;
   text-align: center;
   margin-bottom: 30px;
@@ -21,10 +21,12 @@ $navbar-default-bg: #073b15;
   font-weight: bold;
 }
 
-.row h2 {
-  color: #2c2d2d;
-  text-align: left;
-  margin-bottom: 10px;
+.jumbotron h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
 #logo {
