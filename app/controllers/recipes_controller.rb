@@ -9,7 +9,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    set_recipe
+    @comment = Comment.new
+    @comments = @recipe.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -28,11 +29,10 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    set_recipe
+
   end
 
   def update
-    set_recipe
     if @recipe.update(recipe_params)
       flash[:success] = "Recipe was updated successfully!"
       redirect_to recipe_path(@recipe)
