@@ -7,7 +7,7 @@ class IngredientsEditTest < ActionDispatch::IntegrationTest
                         password: "password", password_confirmation: "password", admin: true)
     @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable saute, add vegetable and oil", chef: @chef)
     @ingredient = Ingredient.create!(name: "chicken")
-    @recipe_ingredient = RecipeIngredient.create!(recipe_id: 1, ingredient_id: 1)
+    @recipe_ingredient = RecipeIngredient.create!(recipe_id: 1, ingredient: @ingredient)
   end
 
   test "reject invalid ingredient update" do

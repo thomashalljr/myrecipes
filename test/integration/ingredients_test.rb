@@ -8,7 +8,7 @@ class IngredientsTest < ActionDispatch::IntegrationTest
     @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable saute, add vegetable and oil", chef: @chef)
     @ingredient = Ingredient.create!(name: "chicken")
     @ingredient2 = Ingredient.create!(name: "turkey")
-    @recipe_ingredient = RecipeIngredient.create!(recipe_id: 1, ingredient_id: 1)
+    @recipe_ingredient = RecipeIngredient.create!(recipe_id: 1, ingredient: @ingredient)
   end
 
   test "should get ingredients index" do
@@ -19,8 +19,8 @@ class IngredientsTest < ActionDispatch::IntegrationTest
   test "should get ingredients listing" do
     get ingredients_path
     assert_template 'ingredients/index'
-    assert_select "a[href=?]", ingredient_path(@ingredient), text: @ingredient.name.capitalize
-    assert_select "a[href=?]", ingredient_path(@ingredient2), text: @ingredient2.name.capitalize
+    assert_select "a[href=?]", ingredient_path(@ingredient), text: @ingredient.name
+    assert_select "a[href=?]", ingredient_path(@ingredient2), text: @ingredient2.name
   end
 
   test "should get ingredients show" do
