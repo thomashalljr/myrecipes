@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
+
+# Gemfile
+gem 'webpacker', '~> 3.5'
+
 gem 'react-rails'
 
 # Use Capistrano for deployment
