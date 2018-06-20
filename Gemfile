@@ -37,6 +37,8 @@ gem 'webpacker', '~> 3.5'
 
 gem 'react-rails'
 
+gem 'stock_quote'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

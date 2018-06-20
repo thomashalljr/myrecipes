@@ -15,6 +15,7 @@
 // require rails-ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require angular
 //= require_tree .
 
 function scrollToBottom() {
