@@ -18,8 +18,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
   test "should get recipes listing" do
     get recipes_path
     assert_template 'recipes/index'
-    assert_select "a[href=?]", recipe_path(@recipe), text: @recipe.name
-    assert_select "a[href=?]", recipe_path(@recipe2), text: @recipe2.name
+    assert_select "a[href=?]", recipe_path(@recipe), text: @recipe.name.try(:capitalize)
+    assert_select "a[href=?]", recipe_path(@recipe2), text: @recipe2.name.try(:capitalize)
   end
 
   test "should get recipes show" do
