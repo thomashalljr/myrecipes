@@ -4,34 +4,10 @@
   <h2>The best recipe sharing app!</h2>
 
   <p>
-    <!-- My first piece of React code -->
-    <%= react_component("HelloWorld") %>
+    <%#
+      Thomas Hall Jr. 7.25.18
+      My first piece of React code
+    %>
+    <%= react_component("Signup") %>
   </p>
-</div>
-
-<!-- Example row of columns -->
-<div id="stock-lookup" ng-controller="stocksController" class="row">
-  <div class="col-lg-12">
-    <!-- My first piece of Angular code -->
-    <form id="stock-lookup-form" ng-submit="lookup()">
-      <input id="stock_ticker" type="text" placeholder="Stock Ticker Symbol" autofocus="true" ng-model="ticker" />
-      <button type="submit" id="stock_ticker_button">
-        Look up your favorite cooking stock
-      </button>
-    </form>
-
-    <div id="stock-lookup-status" class="ng-hide" ng-show="stock.message">
-      {{stock.message}}
-    </div>
-
-    <div id="stock-lookup-errors" class="ng-hide" ng-show="stock.error">
-      {{stock.error}}
-    </div>
-
-    <div id="stock-lookup-results" class="ng-hide" ng-show="stock.name != undefined">
-      <strong>Symbol: </strong> {{stock.symbol}}
-      <strong>Name: </strong> {{stock.name}}
-      <strong>Price </strong> {{stock.last_price}}
-    </div>
-  </div>
 </div>
