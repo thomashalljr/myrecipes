@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   before_action :require_user_like, only: [:like]
 
   def index
-    @recipes = Recipe.paginate(page: params[:page], per_page: 5)
+    @recipes = Recipe.reorder(name: :asc).paginate(page: params[:page], per_page: 5)
   end
 
   def show
