@@ -34,10 +34,11 @@ gem 'bootstrap-will_paginate', '0.0.10'
 
 # Gemfile
 gem 'webpacker', '~> 3.5'
-
 gem 'react-rails'
-
 gem 'stock_quote'
+gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
+gem 'nokogiri', '~> 1.10.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

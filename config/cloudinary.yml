@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: thomashalljr
+  api_key: '343928756439378'
+  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: thomashalljr
+  api_key: '343928756439378'
+  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: thomashalljr
+  api_key: '343928756439378'
+  api_secret: xtTM9PVPEIEnxyANfVW98MZUrYQ
+  enhance_image_tag: true
+  static_image_support: false

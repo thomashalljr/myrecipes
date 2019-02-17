@@ -20,6 +20,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
+    add_cloudinary_image
+
     @recipe.chef = current_chef
     if @recipe.save
       flash[:success] = "Recipe was created successfully!"
@@ -34,6 +37,8 @@ class RecipesController < ApplicationController
   end
 
   def update
+    add_cloudinary_image
+
     if @recipe.update(recipe_params)
       flash[:success] = "Recipe was updated successfully!"
       redirect_to recipe_path(@recipe)
@@ -66,7 +71,7 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :description, ingredient_ids: [])
+      params.require(:recipe).permit(:name, :description, :image, ingredient_ids: [])
     end
 
     def require_same_user
@@ -80,6 +85,14 @@ class RecipesController < ApplicationController
       if !logged_in?
         flash[:danger] = "You must be logged in to perform that action"
         redirect_back(fallback_location: recipe_path(@recipe))
+      end
+    end
+
+    def add_cloudinary_image
+      if params[:image].present?
+        preloaded = Cloudinary::PreloadedFile.new(params[:image])
+        raise "Invalid upload signature" if !preloaded.valid?
+        @recipe.image = preloaded.identifier
       end
     end
 end

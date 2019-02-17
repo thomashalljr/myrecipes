@@ -1,5 +1,6 @@
 <%= render "shared/page_title", title: @recipe.name %>
 <div class="well col-md-8 col-md-offset-2">
+  <div class="center"><%= cl_image_tag(@recipe.image, :crop => :limit, :width => 150, :height => 150) if @recipe.image? %></div>
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
   <%= simple_format(@recipe.description) %>

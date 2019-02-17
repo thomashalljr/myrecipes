@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require angular
+//= require cloudinary
 //= require_tree .
 
 function scrollToBottom() {
