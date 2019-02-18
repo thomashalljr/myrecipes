@@ -30,22 +30,24 @@
             </div>
       </div>
 
-      <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :image %>
+      <% if !f.object.image? %>
+        <div class="form-group">
+          <div class="control-label col-md-2">
+            <%= f.label :image %>
+          </div>
+          <div class="col-md-8">
+            <%= f.cl_image_upload(
+              :image,
+              :tags => "directly_uploaded",
+              :crop => :limit, :width => 1000, :height => 1000,
+              :html => { :class => "checkbox" },
+              :return_delete_token => true
+            ) %>
+            <span class="status"></span>
+            <div class="preview"></div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <%= f.cl_image_upload(
-            :image,
-            :tags => "directly_uploaded",
-            :crop => :limit, :width => 1000, :height => 1000,
-            :html => { :class => "checkbox" },
-            :return_delete_token => true
-          ) %>
-          <span class="status"></span>
-          <div class="preview"></div>
-        </div>
-      </div>
+      <% end %>
 
       <% if f.object.image? %>
         <div class="form-group">
