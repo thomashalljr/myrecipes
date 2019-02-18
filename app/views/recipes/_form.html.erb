@@ -23,13 +23,11 @@
       </div>
 
       <div class="form-group">
-        <div class="row">
             <div class="col-md-offset-2 col-md-8">
               <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text.try(:capitalize)} %>
               <% end %>
             </div>
-        </div>
       </div>
 
       <div class="form-group">
@@ -42,10 +40,19 @@
             :tags => "directly_uploaded",
             :crop => :limit, :width => 1000, :height => 1000,
             :eager => [{ :crop => :fill, :width => 150, :height => 150 }],
-            :html => { :style => "" }
+            :html => { :class => "checkbox" }
           ) %>
         </div>
       </div>
+      <% if f.object.image? %>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-8">
+            <%= cl_image_tag(f.object.image, :crop => :limit, :width => 150, :height => 150) %>
+            <%= f.label :remove_image %>
+            <%= f.check_box :remove_image %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
