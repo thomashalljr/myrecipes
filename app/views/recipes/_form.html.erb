@@ -1,11 +1,3 @@
-<script type="text/javascript">
-$(function() {
-  if($.fn.cloudinary_fileupload !== undefined) {
-    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-  }
-});
-</script>
-
 <%= render 'shared/errors', obj: @recipe %>
 
 <div class="row">
@@ -69,3 +61,14 @@ $(function() {
 
   </div>
 </div>
+
+<!-- Configure Cloudinary jQuery plugin -->
+<%= cloudinary_js_config %>
+
+<script>
+$(function() {
+  if($.fn.cloudinary_fileupload !== undefined) {
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+  }
+});
+</script>
