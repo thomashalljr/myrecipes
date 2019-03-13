@@ -39,11 +39,6 @@ gem "stock_quote"
 gem "carrierwave", "~> 1.0"
 gem "cloudinary"
 gem "nokogiri", "~> 1.10.1"
-gem "rubyzip", ">= 1.2.2"
-gem "ffi", ">= 1.9.24"
-gem "sprockets", ">= 3.7.2"
-gem "rack", ">= 2.0.6"
-gem "loofah", ">= 2.2.3"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
