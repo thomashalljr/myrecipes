@@ -1,7 +1,7 @@
 <%= render "shared/page_title", title: @recipe.name %>
 <div class="well col-md-8 col-md-offset-2">
   <div class="center">
-    <%= cl_image_tag(@recipe.image, :effect => "sharpen", :crop => "fill", :aspect_ratio => "1:1", :gravity => "auto", :width => "300", :radius => "60", :quality => "100", :class => "recipe-image") if @recipe.image? %>
+    <%= cl_image_tag(@recipe.image, :effect => "sharpen", :crop => "fill", :aspect_ratio => "1:1", :gravity => "auto", :width => "250", :radius => "60", :quality => "100", :class => "recipe-image") if @recipe.image? %>
   </div>
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
