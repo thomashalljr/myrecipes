@@ -1,7 +1,7 @@
 <%= render "shared/page_title", title: @recipe.name %>
 <div class="well col-md-8 col-md-offset-2">
   <div class="center">
-    <%= cl_image_tag(@recipe.image, :effect => "sharpen", :crop => "fill", :aspect_ratio => "1:1", :gravity => "auto", :width => "250", :radius => "60", :quality => "100", :class => "recipe-image") if @recipe.image? %>
+    <%= cl_image_tag(@recipe.image, :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => @recipe.image, :class => "recipe-image") if @recipe.image? %>
   </div>
   <h4 class="center description"><strong>Steps: </strong></h4>
   <hr />
@@ -87,3 +87,14 @@
     </div>
   </div>
 <% end %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.min.js"></script>
+<script type="text/javascript">
+  my_breakpoints = function (width){  // width - the current width of the containing element
+    return 50 * Math.floor(width / 50);
+  }
+
+  var cl = cloudinary.Cloudinary.new({cloud_name: "thomashalljr"});
+  cl.config({breakpoints:my_breakpoints, responsive_use_breakpoints:"resize"})
+  cl.responsive();
+</script>
