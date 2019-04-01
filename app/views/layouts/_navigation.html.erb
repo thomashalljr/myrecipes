@@ -33,7 +33,7 @@
             <li>
               <%= link_to "All Ingredients", ingredients_path %>
             </li>
-            <% Ingredient.order(name: :asc).each do |ingredient| %>
+            <% Ingredient.limit(10).order(name: :asc).each do |ingredient| %>
               <li><%= link_to ingredient.name.try(:capitalize), ingredient_path(ingredient) %></li>
             <% end %>
             <% if logged_in? && current_chef.admin? %>
