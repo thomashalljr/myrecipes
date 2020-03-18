@@ -93,4 +93,11 @@ config.webpacker.check_yarn_integrity = false
   config.active_record.dump_schema_after_migration = false
   config.web_socket_server_url = "wss://enjoymyrecipes.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://enjoymyrecipes.herokuapp.com', 'http://enjoymyrecipes.herokuapp.com']
+
+  # SendGrid config on Heroku
+  config.action_mailer.default_url_options = { :host => 'enjoymyrecipes.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
 end
