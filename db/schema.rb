@@ -10,15 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620161325) do
+ActiveRecord::Schema.define(version: 20200316123342) do
 
   create_table "chefs", force: :cascade do |t|
     t.string "chefname"
-    t.string "email"
+    t.string "email", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
     t.boolean "admin", default: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_chefs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_chefs_on_reset_password_token", unique: true
   end
 
   create_table "comments", force: :cascade do |t|

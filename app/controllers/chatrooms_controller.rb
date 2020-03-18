@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
 
-  before_action :require_user
+  before_action :authenticate_chef!
 
   def show
     @message = Message.new

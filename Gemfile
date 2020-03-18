@@ -44,6 +44,8 @@ gem "ffi", ">= 1.9.24"
 gem "sprockets", ">= 3.7.2"
 gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
+gem 'devise', '~> 4.2'
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
@@ -66,6 +68,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "letter_opener"
 end
 
 group :production do

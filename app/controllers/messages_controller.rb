@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  before_action :require_user
+  before_action :authenticate_chef!
 
   def create
     @message = Message.new(message_params)

@@ -1,21 +1,19 @@
 Rails.application.routes.draw do
+  
+  devise_for :chefs, controllers: { registrations: "chefs/registrations" }
+
   root "pages#home"
-  get "pages/home", to: "pages#home"
+  get  "pages/home", to: "pages#home"
 
   resources :recipes do
     resources :comments, only: [:create] #nested route
+
     member do
       post 'like'
     end
   end
 
-  get '/signup', to: 'chefs#new'
-  resources :chefs, except: [:new]
-
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-
+  resources :chefs, only: [:index, :show]
   resources :ingredients, except: [:destroy]
 
   mount ActionCable.server => '/cable'

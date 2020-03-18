@@ -55,12 +55,11 @@ function ContainedButtons(props) {
     <div>
       <Button
         variant="contained"
-        href="/signup"
+        href="/chefs/sign_up"
         color="primary"
         disableRipple
-        className={classNames(classes.margin, classes.bootstrapRoot)}
-      >
-        Sign up for the app
+        className={classNames(classes.margin, classes.bootstrapRoot)} >
+          Sign up
       </Button>
     </div>
   );

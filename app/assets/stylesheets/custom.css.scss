@@ -162,3 +162,23 @@ body {
 a.like-icon:hover {
   text-decoration: none;
 }
+
+.alert {
+  font-size: 16px;
+
+  &-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+  }
+
+  &-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+  }
+
+  &-center {
+    text-align: center;
+  }
+}

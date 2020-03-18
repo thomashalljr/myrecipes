@@ -56,4 +56,11 @@ config.webpacker.check_yarn_integrity = false
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   # Line below is for Cloud9 development
   #config.action_cable.disable_request_forgery_protection = true
+
+  # Devise advises this
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.assets.prefix = "/dev-assets"
+
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 end

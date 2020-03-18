@@ -91,6 +91,6 @@ config.webpacker.check_yarn_integrity = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.web_socket_server_url = "wss://thomashalljr-myrecipes.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://thomashalljr-myrecipes.herokuapp.com', 'http://thomashalljr-myrecipes.herokuapp.com']
+  config.web_socket_server_url = "wss://enjoymyrecipes.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://enjoymyrecipes.herokuapp.com', 'http://enjoymyrecipes.herokuapp.com']
 end
