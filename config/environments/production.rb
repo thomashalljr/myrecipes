@@ -113,4 +113,6 @@ config.webpacker.check_yarn_integrity = false
    :authentication => :plain,
    :enable_starttls_auto => true
  }
+
+ Rails.application.routes.default_url_options[:host] = 'enjoymyrecipes.herokuapp.com'
 end
