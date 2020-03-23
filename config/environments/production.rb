@@ -95,7 +95,7 @@ config.webpacker.check_yarn_integrity = false
   config.action_cable.allowed_request_origins = ['https://enjoymyrecipes.herokuapp.com', 'http://enjoymyrecipes.herokuapp.com']
 
   # SendGrid config on Heroku
-  config.action_mailer.default_url_options = { host: 'enjoymyrecipes.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://enjoymyrecipes.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
