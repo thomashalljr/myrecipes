@@ -11,3 +11,7 @@
     color: #DDD;
   }
 }
+
+.dropdown:not(.open) > a:focus:not(:hover) {
+  color: #DDD;
+}
