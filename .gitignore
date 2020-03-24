@@ -30,3 +30,6 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+
+# Mac finder artifacts
+.DS_Store
