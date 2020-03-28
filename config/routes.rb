@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  
+
   devise_for :chefs, controllers: { registrations: "chefs/registrations" }
 
   root "pages#home"
   get  "pages/home", to: "pages#home"
+
+  get "search", controller: :pages
 
   resources :recipes do
     resources :comments, only: [:create] #nested route

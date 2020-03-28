@@ -10,7 +10,7 @@ end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "~> 5.1.6"
-gem "bootstrap-sass", ">= 3.4.1"
+gem "bootstrap", "~> 4.4.1"
 gem "jquery-rails"
 # Use Puma as the app server
 gem "puma", "~> 3.7"
@@ -32,7 +32,7 @@ gem "jbuilder", "~> 2.5"
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
 gem "will_paginate", "3.1.0"
-gem "bootstrap-will_paginate", "0.0.10"
+gem "will_paginate-bootstrap4"
 
 # Gemfile
 gem "webpacker", "~> 3.5"
@@ -48,6 +48,8 @@ gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
 gem 'devise', '~> 4.2'
 gem "figaro"
+gem "ransack"
+gem "font-awesome-sass", "~> 5.12.0"
 
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development

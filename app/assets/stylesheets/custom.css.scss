@@ -1,10 +1,13 @@
-$navbar-default-bg: #073b15;
-
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .badge {
   background-color: #b3b3b3;
+
+  a {
+    color: #073b15;
+  }
 }
 
 .center {
@@ -60,10 +63,12 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   padding-top: 20px;
   position: absolute;
@@ -159,8 +164,12 @@ body {
   padding-bottom: 15px;
 }
 
-a.like-icon:hover {
-  text-decoration: none;
+a.like-icon {
+  color: #073b15;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .alert {
@@ -181,4 +190,8 @@ a.like-icon:hover {
   &-center {
     text-align: center;
   }
+}
+
+.recipe-created-by {
+  margin-right: 80px;
 }

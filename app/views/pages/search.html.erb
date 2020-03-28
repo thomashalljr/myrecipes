@@ -1,0 +1,27 @@
+<%= render "shared/page_title_without_hr", title: "Search results for #{@search_term}" %>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <div class="card">
+      <div class="card-body">
+        <h3>Recipes</h3>
+
+        <% @recipes.each do |recipe| %>
+          <h4><%= link_to recipe.name.try(:capitalize), recipe_path(recipe) %></h4>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-6">
+
+    <div class="card">
+      <div class="card-body">
+        <h3>Ingredients</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
