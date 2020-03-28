@@ -1,11 +1,6 @@
-<% obj.each.with_index do |recipe, index| %>
+<% obj.each do |recipe| %>
 
-  <% if index == obj.size - 1 %>
-    <div class="row">
-  <% else %>
-    <div class="row mb-4">
-  <% end %>
-
+  <div class="row mb-4">
     <div class="col-md-2">
       <section class="chef_info center">
           <%= gravatar_for(recipe.chef, size: 120) %>
