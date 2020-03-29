@@ -7,7 +7,7 @@
     <%= will_paginate @ingredient_recipes %>
   </div>
 
-  <%= render 'recipes/recipe', obj: @ingredient_recipes %>
+  <%= render partial: "recipes/recipe", object: @ingredient_recipes %>
 
   <div class="center">
     <%= will_paginate @ingredient_recipes %>
