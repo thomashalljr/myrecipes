@@ -109,12 +109,6 @@ body {
   padding-left: 0;
 }
 
-.chef-title {
-  color: #073b15;
-  font-weight: bold;
-  font-size: 1.25em;
-}
-
 .input_checkbox input {
   width: auto !important;
 }
@@ -195,4 +189,12 @@ a.like-icon {
 
 .recipe-created-by {
   margin-right: 80px;
+}
+
+h4 a {
+  color: #073b15;
+
+  &:hover {
+    color: #073b15;
+  }
 }

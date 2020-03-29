@@ -1,17 +1,13 @@
-<%= render 'shared/page_title', title: "#{@ingredient.name}" %>
+<%= render "shared/page_title", title: "#{@ingredient.name}" %>
 
 <% if @ingredient.recipes.count != 0 %>
-  <h4 align="center">Recipe's containing <%= @ingredient.name.try(:downcase) %></h4>
-
-  <div class="center">
-    <%= will_paginate @ingredient_recipes %>
-  </div>
+  <h4 class="center mb-3">Recipes containing <%= @ingredient.name.try(:downcase) %></h4>
 
   <%= render partial: "recipes/recipe", object: @ingredient_recipes %>
 
   <div class="center">
-    <%= will_paginate @ingredient_recipes %>
+    <%= will_paginate @ingredient_recipes, list_classes: %w(pagination justify-content-center mt-5) %>
   </div>
 <% else %>
-  <h4 align="center">No recipes yet!</h4>
+  <h4 class="center">No recipes yet!</h4>
 <% end %>
