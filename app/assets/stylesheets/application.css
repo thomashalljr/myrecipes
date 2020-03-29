@@ -13,6 +13,7 @@
  * require_tree .
  *= require easy-autocomplete
  *= require custom
- *= require bootstrap_custom
+ *= require bootstrap-custom
+ *= require will-paginate
  *= require_self
  */
