@@ -53,7 +53,7 @@
 </div>
 
 <% if chef_signed_in? %>
-  <div class="row mt-3">
+  <div class="row mt-4">
     <div class="col-md-8 offset-md-2">
 
       <h3>Submit Comment</h3>
@@ -82,22 +82,14 @@
   </div>
 <% end %>
 
-<% if @recipe.comments.size != 0 %>
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h3 class="mb-3">Prior Comments</h3>
-      <div id="messages">
-        <%= render partial: "comments/comments", object: @comments %>
-      </div>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h3 class="my-3" id="comments-heading"><% if @recipe.comments.size != 0 %>Prior Comments<% else %>No comments yet!<% end %></h3>
+    <div id="messages">
+      <%= render partial: "comments/comments", object: @comments %>
     </div>
   </div>
-<% else %>
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <h3>No comments yet!</h3>
-    </div>
-  </div>
-<% end %>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.3.0/cloudinary-core-shrinkwrap.min.js"></script>
 <script type="text/javascript">
