@@ -14,6 +14,36 @@
   outline-style: none;
 }
 
-.card-title a {
+.card-title, h4 a {
   color: #073b15;
+
+  &:hover {
+    color: #073b15;
+  }
+}
+
+.btn-custom {
+  font-weight: 600;
+  font-size: 1rem;
+  border: .0625rem solid transparent;
+  border-radius: .25rem;
+  padding: .625rem 1.6rem;
+  white-space: nowrap;
+  line-height: 1.7;
+
+  &-primary {
+    color: #28a745;
+    background-color: transparent;
+    border-color: #28a745;
+  }
+
+  &-primary:hover {
+    color: #FFF;
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+}
+
+.btn-custom:not(:disabled):not(.disabled) {
+    cursor: pointer;
 }

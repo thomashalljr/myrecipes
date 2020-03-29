@@ -35,8 +35,9 @@ const styles = theme => ({
       '"Segoe UI Symbol"',
     ].join(','),
     '&:hover': {
-      backgroundColor: '#fff',
-      borderColor: '#fff',
+      color: '#073b15',
+      backgroundColor: '#FFF',
+      borderColor: '#073b15',
     },
     '&:active': {
       boxShadow: 'none',
