@@ -1,88 +1,99 @@
-<%= render "shared/page_title", title: @recipe.name %>
-<div class="well col-md-8 col-md-offset-2">
-  <div class="center">
-    <%= cl_image_tag(@recipe.image, :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => @recipe.image, :class => "recipe-image") if @recipe.image? %>
-  </div>
-  <h4 class="center description"><strong>Steps: </strong></h4>
-  <hr />
-  <%= simple_format(@recipe.description) %>
-  <hr />
-  <% if @recipe.ingredients.any? %>
-    <p>Ingredients: <%= render @recipe.ingredients %></p>
-  <% end %>
-  <div class="pull-right">
-    <p class="center">
-      <em>Created by:</em>
-    </p>
-    <p class="center">
-      <%= link_to gravatar_for(@recipe.chef), chef_path(@recipe.chef) %>
-    </p>
-    <p class="center">
-      <small><%= @recipe.chef.chefname.capitalize %></small>
-      <div class="pull-right">
-          <%= time_ago_in_words(@recipe.created_at) %> ago
-      </div>
-    </p>
-  </div>
-  <div class="recipe-actions">
-    <% if chef_signed_in? && (current_chef == @recipe.chef || current_chef.admin?) %>
-      <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-xs btn-warning" %>
-      <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete,
-                                        data: { confirm: "Are you sure you want to delete this recipe?"}, class: "btn btn-xs btn-danger" %>
-    <% end %>
-    <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-xs btn-primary" %>
-  </div>
-</div>
+<%= render "shared/page_title_without_hr", title: @recipe.name %>
 
 <div class="row">
-  <div class="row col-md-8 col-md-offset-2">
-    <%= link_to like_recipe_path(@recipe, like: true), method: :post, class: "like-icon" do %>
-      <i class="glyphicon glyphicon-thumbs-up"></i>
-    <% end %> <%= @recipe.thumbs_up_total %> ||
-    <%= link_to like_recipe_path(@recipe, like: false), method: :post, class: "like-icon" do %>
-      <i class="glyphicon glyphicon-thumbs-down"></i>
-    <% end %> <%= @recipe.thumbs_down_total %>
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-body">
+
+        <%= cl_image_tag(@recipe.image, :width => :auto, :crop => :scale, :responsive => :true, :responsive_placeholder => @recipe.image, :class => "card-img-top recipe-image") if @recipe.image? %>
+        <h5 class="card-title">Steps</h5>
+        <p class="card-text"><%= simple_format(@recipe.description) %></p>
+        <hr />
+
+        <% if @recipe.ingredients.any? %>
+          <p class="card-text">Ingredients: <%= render @recipe.ingredients %></p>
+        <% end %>
+
+        <p class="card-text">
+          <em>Created by:</em>
+        </p>
+
+        <p class="card-text">
+          <%= link_to gravatar_for(@recipe.chef), chef_path(@recipe.chef) %>
+        </p>
+
+        <p class="card-text">
+          <div class="float-right">
+            <%= link_to like_recipe_path(@recipe, like: true), method: :post, class: "like-icon" do %>
+              <%= icon('far', 'thumbs-up') %>
+            <% end %> <%= @recipe.thumbs_up_total %> |
+            <%= link_to like_recipe_path(@recipe, like: false), method: :post, class: "like-icon" do %>
+              <%= icon('far', 'thumbs-down') %>
+            <% end %> <%= @recipe.thumbs_down_total %>
+          </div>
+          <div class="recipe-created-by">
+            <small><%= @recipe.chef.chefname.capitalize %>
+            <%= time_ago_in_words(@recipe.created_at) %> ago</small>
+          </div>
+        </p>
+
+        <p class="card-text">
+          <% if chef_signed_in? && (current_chef == @recipe.chef || current_chef.admin?) %>
+            <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-xs btn-warning" %>
+            <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete,
+                data: { confirm: "Are you sure you want to delete this recipe?"}, class: "btn btn-xs btn-danger" %>
+          <% end %>
+
+          <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-xs btn-custom-primary" %>
+        </p>
+
+      </div>
+    </div>
   </div>
 </div>
 
 <% if chef_signed_in? %>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h3>Comments: </h3>
-      <hr />
+  <div class="row mt-3">
+    <div class="col-md-8 offset-md-2">
+
+      <h3>Submit Comment</h3>
       <%= form_for([@recipe, @comment], remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-        <div class="form-group">
-          <div class="control-label col-md-2">
-              <%= f.label :description, "Comment" %>
-          </div>
+
+        <div class="row">
           <div class="col-md-8">
+            <div class="form-group">
               <%= f.text_area :description, rows: 8, class: "form-control", placeholder: "Enter comment here" %>
+            </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
-              <%= f.submit "Submit Comment", class: "btn btn-primary btn-lg btn-xlarge" %>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= f.submit "Submit Comment", class: "btn btn-custom-primary btn-xs" %>
+            </div>
           </div>
         </div>
+
       <% end %>
       <hr />
+
     </div>
   </div>
 <% end %>
 
 <% if @recipe.comments != 0 %>
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h3>Prior Comments: </h3>
-        <div id="messages">
-          <%= render partial: 'comments/comments', object: @comments %>
-        </div>
+    <div class="col-md-8 offset-md-2">
+      <h3 class="mb-3">Prior Comments</h3>
+      <div id="messages">
+        <%= render partial: "comments/comments", object: @comments %>
+      </div>
     </div>
   </div>
 <% else %>
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 offset-md-2">
       <h3>No comments yet!</h3>
     </div>
   </div>
