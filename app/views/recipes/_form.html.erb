@@ -23,7 +23,12 @@
 
           <div class="form-group field">
             <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
-              <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text.try(:capitalize)} %>
+              <%= cb.label(class: "checkbox-inline input_checkbox") do %>
+                <%= cb.check_box(class: "checkbox") %>
+                <span class="text">
+                  <%= cb.text.try(:capitalize) %>
+                </span>
+              <% end %>
             <% end %>
           </div>
 
@@ -77,7 +82,7 @@
 
 <script>
 $(function() {
-  
+
   if ($.fn.cloudinary_fileupload !== undefined) {
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }

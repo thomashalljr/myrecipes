@@ -7,3 +7,12 @@ $myrecipes-link: #073b15;
     color: $myrecipes-link;
   }
 }
+
+.checkbox-inline {
+  margin-right: 0.5em;
+
+  .text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
