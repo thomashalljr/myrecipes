@@ -16,5 +16,6 @@
  *= require bootstrap-custom
  *= require will-paginate
  *= require myrecipes
+ *= require cloudinary
  *= require_self
  */

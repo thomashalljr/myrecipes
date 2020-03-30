@@ -1,0 +1,39 @@
+$myrecipes-link: #073b15;
+
+.cloudinary-choose-file {
+
+  position: relative;
+  display: inline-block;
+  height: 38px;
+
+  &:hover input[type=submit] {
+    color: #FFF;
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+
+  .cloudinary-fileupload {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+
+  input {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 125px;
+    height: 38px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.delete_by_token {
+  color: $myrecipes-link;
+  font-size: 1.5em;
+
+  &:hover {
+    color: $myrecipes-link;
+  }
+}

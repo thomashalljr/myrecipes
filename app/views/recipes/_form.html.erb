@@ -1,80 +1,84 @@
-<%= render 'shared/errors', obj: @recipe %>
+<%= render "shared/errors", obj: @recipe %>
 
 <%= form_for(@recipe, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-  <div class="form-group">
-    <div class="control-label col-md-2">
-      <%= f.label :name %>
-    </div>
-    <div class="col-md-8">
-      <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
-    </div>
-  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
 
-  <div class="form-group">
-    <div class="control-label col-md-2">
-        <%= f.label :description %>
-    </div>
-    <div class="col-md-8">
-        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
-    </div>
-  </div>
+          <div class="form-group field">
+            <%= f.label :name %>
+            <div>
+              <%= f.text_field :name, class: "form-control", placeholder: "Name of recipe", autofocus: true %>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-8">
-      <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
-        <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text.try(:capitalize)} %>
-      <% end %>
-    </div>
-  </div>
+          <div class="form-group field">
+            <%= f.label :description %>
+            <div>
+              <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
+            </div>
+          </div>
 
-  <% if !f.object.image? %>
-    <div class="form-group">
-      <div class="control-label col-md-2">
-        <%= f.label :image %>
+          <div class="form-group field">
+            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
+              <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text.try(:capitalize)} %>
+            <% end %>
+          </div>
+
+          <% if !f.object.image? %>
+            <div class="form-group field">
+              <%= f.label :image %>
+              <div>
+                <div class="cloudinary-choose-file">
+                  <input class="btn btn-custom-primary" type="submit" value="Select Image">
+                  <%= f.cl_image_upload(
+                    :image,
+                    :tags => "directly_uploaded",
+                    :crop => :fill, :width => 750, :height => 500,
+                    :html => {},
+                    :return_delete_token => true
+                  ) %>
+                </div>
+              </div>
+              <div>
+                <span class="status"></span>
+                <div class="preview"></div>
+              </div>
+            </div>
+          <% end %>
+
+          <% if f.object.image? %>
+            <div class="form-group field">
+              <%= cl_image_tag(f.object.image, :crop => :limit, :width => 150, :height => 150) %>
+              <%= f.label :remove_image %>
+              <%= f.check_box :remove_image %>
+            </div>
+          <% end %>
+
+          <div class="form-group actions">
+            <%= f.submit class: "btn btn-xs btn-custom-signin btn-block" %>
+          </div>
+
+          <div>
+            <%= link_to "Cancel request and return to recipes listing", recipes_path, class: "myrecipes-link" %>
+          </div>
+
+        </div>
       </div>
-      <div class="col-md-8">
-        <%= f.cl_image_upload(
-          :image,
-          :tags => "directly_uploaded",
-          :crop => :fill, :width => 750, :height => 500,
-          :html => { :class => "checkbox" },
-          :return_delete_token => true
-        ) %>
-        <span class="status"></span>
-        <div class="preview"></div>
-      </div>
-    </div>
-  <% end %>
-
-  <% if f.object.image? %>
-    <div class="form-group">
-      <div class="col-md-offset-2 col-md-8">
-        <%= cl_image_tag(f.object.image, :crop => :limit, :width => 150, :height => 150) %>
-        <%= f.label :remove_image %>
-        <%= f.check_box :remove_image %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-      <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
     </div>
   </div>
 
 <% end %>
-
-<div class="col-md-4 col-md-offset-4 colormatch">
-  [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
-</div>
 
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
 
 <script>
 $(function() {
-  if($.fn.cloudinary_fileupload !== undefined) {
+  
+  if ($.fn.cloudinary_fileupload !== undefined) {
     $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
   }
 
@@ -93,6 +97,7 @@ $(function() {
     })
     .off("cloudinarydone").on("cloudinarydone", function (e, data) {
       $(this).hide();
+      $(".cloudinary-choose-file").hide();
       $(".status").text("");
       var preview = $(".preview").html('');
       $.cloudinary.image(data.result.public_id, {
@@ -110,6 +115,7 @@ $(function() {
             $('.preview').html('');
             $('input[name="photo[image]"]').remove();
             $(".cloudinary-fileupload").show();
+            $(".cloudinary-choose-file").show();
           }).fail(function() {
             $('.status').text("Cannot delete image");
         });
