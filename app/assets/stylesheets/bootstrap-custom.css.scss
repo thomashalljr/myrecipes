@@ -34,6 +34,23 @@
     background-color: #28a745;
     border-color: #28a745;
   }
+
+  &-signin {
+    color: #FFF;
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+
+  &-signin:hover {
+    color: #FFF;
+    background-color: #1e7b34;
+    border-color: #1e7b34;
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
 }
 
 .btn-custom:not(:disabled):not(.disabled) {

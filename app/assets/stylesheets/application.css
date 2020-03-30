@@ -15,5 +15,6 @@
  *= require custom
  *= require bootstrap-custom
  *= require will-paginate
+ *= require myrecipes
  *= require_self
  */

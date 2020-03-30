@@ -1,0 +1,9 @@
+$myrecipes-link: #073b15;
+
+.myrecipes-link {
+  color: $myrecipes-link;
+
+  &:hover {
+    color: $myrecipes-link;
+  }
+}
