@@ -1,6 +1,11 @@
-$myrecipes-link: #073b15;
+// global styles
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-.myrecipes-link {
+@import "colors";
+
+a {
   color: $myrecipes-link;
 
   &:hover {
@@ -15,4 +20,9 @@ $myrecipes-link: #073b15;
     display: inline-block;
     vertical-align: middle;
   }
+}
+
+.ingredient {
+  display: inline-block;
+  padding-right: 10px;
 }

@@ -10,6 +10,8 @@ class Recipe < ApplicationRecord
   has_many :likes, dependent: :destroy
   mount_uploader :image, ImageUploader
 
+  accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
+
   def thumbs_up_total
     self.likes.where(like: true).size
   end

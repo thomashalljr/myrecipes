@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :image, :remove_image, ingredient_ids: [])
+      params.require(:recipe).permit(:name, :description, :image, :remove_image, {recipe_ingredients_attributes: [:id, :ingredient_id, :_destroy]} )
     end
 
     def require_same_user

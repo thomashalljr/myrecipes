@@ -22,14 +22,16 @@
           </div>
 
           <div class="form-group field">
-            <%= f.collection_check_boxes :ingredient_ids, Ingredient.all.order(:name), :id, :name do |cb| %>
-              <%= cb.label(class: "checkbox-inline input_checkbox") do %>
-                <%= cb.check_box(class: "checkbox") %>
-                <span class="text">
-                  <%= cb.text.try(:capitalize) %>
-                </span>
+            <%= link_to_add_fields "Add ingredient", f, :recipe_ingredients %>
+            <div class="ingredients">
+              <%= f.fields_for :recipe_ingredients do |recipe_ingredient| %>
+                <div class="ingredient">
+                  <%= recipe_ingredient.collection_select :ingredient_id, Ingredient.all.order(:name), :id, :name %>
+                  <%= recipe_ingredient.hidden_field :_destroy %>
+                  <%= link_to "remove", "javascript:void(0)", class: "remove-ingredient" %>
+                </div>
               <% end %>
-            <% end %>
+            </div>
           </div>
 
           <% if !f.object.image? %>
@@ -67,7 +69,7 @@
           </div>
 
           <div>
-            <%= link_to "Cancel request and return to recipes listing", recipes_path, class: "myrecipes-link" %>
+            <%= link_to "Cancel request and return to recipes listing", recipes_path %>
           </div>
 
         </div>
@@ -76,6 +78,41 @@
   </div>
 
 <% end %>
+
+<script>
+  var add_ingredient     = document.getElementById("add-ingredient");
+  var remove_ingredients = document.getElementsByClassName("remove-ingredient");
+
+  function add_field(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    $(".ingredients").append(content.replace(regexp, new_id));
+    $(".remove-ingredient:last").on("click", function(e) {
+      e.preventDefault();
+      ( remove_ingredient.bind(this) )();
+    });
+  }
+
+  function remove_ingredient() {
+    $(this).closest(".ingredient").find('input[type="hidden"]').attr("value", "true");
+    $(this).closest(".ingredient").hide();
+  }
+
+  add_ingredient.addEventListener("click", function(e) {
+    e.preventDefault();
+    var link = $(this);
+    var association = $(this).data("association");
+    var content = $(this).data("content");
+    add_field(link, association, content);
+  });
+
+  for (var i = 0; i < remove_ingredients.length; i++) {
+    remove_ingredients[i].addEventListener("click", function(e) {
+      e.preventDefault();
+      ( remove_ingredient.bind(this) )();
+    });
+  }
+</script>
 
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
