@@ -23,6 +23,4 @@ Rails.application.routes.draw do
   get '/chat', to: 'chatrooms#show'
 
   resources :messages, only: [:create]
-
-  get 'search_stocks', to: 'stocks#search'
 end

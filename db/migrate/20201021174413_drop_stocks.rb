@@ -1,5 +1,9 @@
-class CreateStocks < ActiveRecord::Migration[5.1]
-  def change
+class DropStocks < ActiveRecord::Migration[5.1]
+  def up
+    drop_table :stocks
+  end
+
+  def down
     create_table :stocks do |t|
       t.string   :ticker
       t.string   :name
