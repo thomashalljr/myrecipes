@@ -15,7 +15,6 @@
 // require rails-ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require angular
 //= require cloudinary
 //= require_tree .
 
