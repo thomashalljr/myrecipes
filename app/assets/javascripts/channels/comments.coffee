@@ -6,10 +6,10 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    # Called when there's incoming data on the websocket for this channel
     comments_heading = $("#comments-heading")[0];
 
-    if comments_heading.textContent == "No comments yet!"
+    if comments_heading.textContent is "No comments yet!"
       comments_heading.textContent = "Prior Comments";
 
-    $("#messages").prepend(data);
-    # Called when there's incoming data on the websocket for this channel
+    $("#comments").prepend(data);
