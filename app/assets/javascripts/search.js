@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
 
-  $input = $("[data-behavior='autocomplete']");
+  var input = $("[data-behavior='autocomplete']");
 
   var options = {
     getValue: "name",
@@ -19,12 +19,12 @@ document.addEventListener("turbolinks:load", function() {
     ],
     list: {
       onChooseEvent: function() {
-        var url = $input.getSelectedItemData().url;
-        $input.val("");
+        var url = input.getSelectedItemData().url;
+        input.val("");
         Turbolinks.visit(url);
       }
     }
   }
 
-  $input.easyAutocomplete(options);
+  input.easyAutocomplete(options);
 });
