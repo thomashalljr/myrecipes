@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require cloudinary
+//= require jquery.easy-autocomplete
 //= require_tree .
