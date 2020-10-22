@@ -16,7 +16,3 @@ App.chatroom = App.cable.subscriptions.create "ChatroomChannel",
       messages = $('#messages')[0]
       messages.scrollTop = messages.scrollHeight
     return
-
-  jQuery(document).on 'turbolinks:load', ->
-    scrollToBottom()
-    return
