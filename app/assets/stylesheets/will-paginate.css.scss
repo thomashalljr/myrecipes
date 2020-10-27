@@ -1,13 +1,14 @@
+@import "colors";
+
 .page-link {
-  color: #28a745;
+  color: $button-green;
 
   &:hover {
-    color: #28a745;
+    color: $button-green;
   }
 }
 
 .page-item.active .page-link {
-  color: #FFF;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: $button-green;
+  border-color: $button-green;
 }
