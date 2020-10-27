@@ -2,18 +2,17 @@
 
 .cloudinary-choose-file {
   position: relative;
-  display: inline-block;
   height: 38px;
 
   &:hover input[type=submit] {
-    color: #FFF;
-    background-color: #28a745;
-    border-color: #28a745;
+    color: $white;
+    background-color: $button-green;
+    border-color: $button-green;
   }
 
   .cloudinary-fileupload {
     opacity: 0;
-    filter: alpha(opacity=0);
+    filter: alpha(opacity=0); /* IE8 and lower */
   }
 
   input {
@@ -30,7 +29,7 @@
 
 .delete_by_token {
   color: $myrecipes-link;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 
   &:hover {
     color: $myrecipes-link;

@@ -1,8 +1,6 @@
-// global styles
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
 @import "colors";
 
 a {
@@ -13,15 +11,6 @@ a {
   }
 }
 
-.checkbox-inline {
-  margin-right: 0.5em;
-
-  .text {
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
 .ingredient {
   display: inline-block;
   padding-right: 10px;
@@ -29,10 +18,10 @@ a {
 
 .badge {
   background-color: #b3b3b3;
-  padding: 0.25em 0.6em;
+  padding: 0.2rem 0.4rem;
 
   a {
-    color: #073b15;
+    color: $myrecipes-link;
   }
 }
 
@@ -41,80 +30,41 @@ a {
 }
 
 .jumbotron {
-  background-image: asset-url("cover_img.jpg");
+  background-image: asset-url("cover-img.jpg");
   background-size: cover;
   height: 300px;
 }
 
-.jumbotron h1 {
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: -1px;
-  font-weight: bold;
+.jumbotron {
+  h1, h2 {
+    color: $white;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
 }
 
-.jumbotron h2 {
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: -1px;
-  font-weight: bold;
-}
-
-#logo {
-  float: left;
-  font-size: 1.7em;
-  color: #fff;
+a#logo {
+  font-size: 1.7rem;
+  color: $white;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
 }
 
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.btn-xlarge {
-  background-color: #073b15;
-}
-
-.btn-xlarge:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+// Whitespace buffer without footer present
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 3rem;
   overflow-x: hidden;
 }
 
-.footer {
-  padding-top: 20px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
-
-.description {
-  margin-top: 0;
-}
-
-.well a {
-  color: #073b15;
-}
-
-.chef_info {
+.chef-info {
   margin-top: 10px;
 }
 
