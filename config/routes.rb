@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :chefs, controllers: { registrations: "chefs/registrations" }
+  devise_for :chefs, controllers: { registrations: "chefs/registrations", sessions: "chefs/sessions" }
 
   root "pages#home"
   get  "pages/home", to: "pages#home"
