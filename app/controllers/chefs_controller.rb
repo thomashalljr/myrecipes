@@ -12,8 +12,7 @@ class ChefsController < ApplicationController
 
   private
 
-  def set_chef
-    @chef = Chef.find(params[:id])
-  end
-
+    def set_chef
+      @chef = Chef.find(params[:id])
+    end
 end

@@ -12,7 +12,7 @@ class PagesController < ApplicationController
                              .paginate(page: params[:ingredients_page], per_page: 10)
 
     respond_to do |format|
-      format.html {}
+      format.html
       format.json {
         @recipes     = @recipes.limit(5)
         @ingredients = @ingredients.limit(5)
