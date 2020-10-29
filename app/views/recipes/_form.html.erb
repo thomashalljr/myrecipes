@@ -41,9 +41,8 @@
                 <input class="btn btn-custom-primary" type="submit" value="Select Image" />
                 <%= f.cl_image_upload(
                   :image,
-                  :tags => "directly_uploaded",
+                  :tags => "MyRecipes_recipe_image",
                   :crop => :fill, :width => 750, :height => 500,
-                  :html => {},
                   :return_delete_token => true
                 ) %>
               </div>
