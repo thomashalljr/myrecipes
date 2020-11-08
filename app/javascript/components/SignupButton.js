@@ -1,27 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  button: {
+  root: {
     margin: theme.spacing.unit,
-  },
-  input: {
-    display: 'none',
-  },
-  margin: {
-    margin: theme.spacing.unit,
-  },
-  bootstrapRoot: {
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 16,
     padding: '6px 12px',
-    border: '1px solid',
+    border: '1px solid #fff',
     backgroundColor: '#073b15',
-    borderColor: '#fff',
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -50,24 +40,22 @@ const styles = theme => ({
   },
 });
 
-function ContainedButtons(props) {
+function SignupButton(props) {
   const { classes } = props;
   return (
-    <div>
-      <Button
-        variant="contained"
-        href="/chefs/sign_up"
-        color="primary"
-        disableRipple
-        className={classNames(classes.margin, classes.bootstrapRoot)} >
-          Sign up
-      </Button>
-    </div>
+    <Button
+      variant="contained"
+      href="/chefs/sign_up"
+      color="primary"
+      disableRipple
+      className={classes.root}>
+        Sign up
+    </Button>
   );
 }
 
-ContainedButtons.propTypes = {
+SignupButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContainedButtons);
+export default withStyles(styles)(SignupButton);
