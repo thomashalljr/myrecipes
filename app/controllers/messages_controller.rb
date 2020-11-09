@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
     if @message.save
       ActionCable.server.broadcast "chatroom", message: render_message(@message), chef: @message.chef.chefname
     else
-      render "chatrooms/show"
+      flash[:danger] = "We're sorry, there was a problem creating your message"
+      redirect_to chat_path
     end
   end
 

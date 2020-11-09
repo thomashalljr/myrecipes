@@ -1,13 +1,13 @@
-<%= render "shared/page_title_without_hr", title: "ChefChat" %>
+<%= render "shared/page_title_without_hr", title: "Chat" %>
 
 <div class="row">
   <div class="offset-md-2 col-md-8">
-    <div class="messages" id="messages">
+    <div id="messages">
       <%= render @messages %>
     </div>
     <hr />
     <div class="message-container">
-      <%= form_for(@message, remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for(@message, remote: true, html: {class: "form-horizontal", role: "form"}) do |f| %>
         <%= f.text_area :content, class: "form-control", data: { behavior: "message-entered" }, placeholder: "Say something!" %>
         <%= f.submit "Send", class: "btn btn-custom-signin" %>
       <% end %>
