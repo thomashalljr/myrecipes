@@ -9,21 +9,21 @@
       <div class="card">
         <div class="card-body">
 
-          <div class="form-group field">
+          <div class="form-group">
             <%= f.label :chefname, "Choose Chef Name" %>
             <div>
               <%= f.text_field :chefname, class: "form-control", placeholder: "Enter your name", autofocus: true %>
             </div>
           </div>
 
-          <div class="form-group field">
+          <div class="form-group">
             <%= f.label :email %>
             <div>
               <%= f.email_field :email, class: "form-control", placeholder: "Enter your email", autocomplete: "email" %>
             </div>
           </div>
 
-          <div class="form-group field">
+          <div class="form-group">
             <%= f.label :password %>
             <% min_pass = "" %>
             <% if @minimum_password_length %>
@@ -34,7 +34,7 @@
             </div>
           </div>
 
-          <div class="form-group field">
+          <div class="form-group">
             <%= f.label :password_confirmation, "Confirm Password" %>
             <div>
               <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm password", autocomplete: "new-password" %>
