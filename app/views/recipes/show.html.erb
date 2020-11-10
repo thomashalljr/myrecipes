@@ -39,12 +39,12 @@
 
         <p class="card-text">
           <% if chef_signed_in? && (current_chef == @recipe.chef || current_chef.admin?) %>
-            <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-xs btn-warning" %>
+            <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: "btn btn-warning" %>
             <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete,
-                data: { confirm: "Are you sure you want to delete this recipe?"}, class: "btn btn-xs btn-danger" %>
+                data: { confirm: "Are you sure you want to delete this recipe?"}, class: "btn btn-danger" %>
           <% end %>
 
-          <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-xs btn-custom-primary" %>
+          <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-custom-primary" %>
         </p>
 
       </div>
@@ -70,7 +70,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="form-group">
-              <%= f.submit "Submit Comment", class: "btn btn-custom-primary btn-xs" %>
+              <%= f.submit "Submit Comment", class: "btn btn-custom-primary" %>
             </div>
           </div>
         </div>

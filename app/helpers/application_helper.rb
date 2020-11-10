@@ -15,4 +15,11 @@ module ApplicationHelper
     link_to(name, "javascript:void(0);", "data-association": "#{association}", "data-content": "#{fields}", id: "add-ingredient")
   end
 
+  def min_password_placeholder min_password_length
+    min_pass = ""
+    if min_password_length
+      min_pass = " (#{min_password_length} characters minimum)"
+    end
+  end
+
 end

@@ -1,6 +1,6 @@
 <%= render "shared/page_title_without_hr", title: "Sign up" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal", role: "form"}) do |f| %>
 
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -25,10 +25,7 @@
 
           <div class="form-group">
             <%= f.label :password %>
-            <% min_pass = "" %>
-            <% if @minimum_password_length %>
-              <% min_pass = " (#{@minimum_password_length} characters minimum)" %>
-            <% end %>
+            <% min_pass = min_password_placeholder(@minimum_password_length) %>
             <div>
               <%= f.password_field :password, class: "form-control", placeholder: "Choose a password#{min_pass}", autocomplete: "new-password" %>
             </div>
@@ -41,8 +38,8 @@
             </div>
           </div>
 
-          <div class="form-group actions">
-            <%= f.submit "Sign up", class: "btn btn-xs btn-custom-signin btn-block" %>
+          <div class="form-group">
+            <%= f.submit "Sign up", class: "btn btn-custom-signin btn-block" %>
           </div>
 
           <div>

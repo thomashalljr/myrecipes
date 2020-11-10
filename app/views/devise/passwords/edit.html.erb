@@ -13,10 +13,7 @@
 
           <div class="form-group">
             <%= f.label :password, "New password" %>
-            <% min_pass = "" %>
-            <% if @minimum_password_length %>
-              <% min_pass = " (#{@minimum_password_length} characters minimum)" %>
-            <% end %>
+            <% min_pass = min_password_placeholder(@minimum_password_length) %>
             <div>
               <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "Enter your new password#{min_pass}" %>
             </div>
@@ -29,8 +26,8 @@
             </div>
           </div>
 
-          <div class="form-group actions">
-            <%= f.submit "Change my password", class: "btn btn-xs btn-custom-signin btn-block" %>
+          <div class="form-group">
+            <%= f.submit "Change my password", class: "btn btn-custom-signin btn-block" %>
           </div>
 
           <div>
