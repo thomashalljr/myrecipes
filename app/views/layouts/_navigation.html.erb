@@ -1,19 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-dark mb-4">
   <%= link_to "myrecipes", root_path, class: "navbar-brand", id: "logo" %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+  <div class="collapse navbar-collapse" id="navbar-collapse">
     <ul class="navbar-nav mr-auto">
 
       <% if chef_signed_in? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRecipes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-recipes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Recipes
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownRecipes">
+          <div class="dropdown-menu" aria-labelledby="navbar-dropdown-recipes">
             <%= link_to "All Recipes", recipes_path, class: "dropdown-item" %>
             <%= link_to "Create recipe", new_recipe_path, class: "dropdown-item" %>
           </div>
@@ -35,13 +35,13 @@
       <% end %>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownIngredients" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-ingredients" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Ingredients
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownIngredients">
+        <div class="dropdown-menu" aria-labelledby="navbar-dropdown-ingredients">
           <%= link_to "All Ingredients", ingredients_path, class: "dropdown-item" %>
 
-          <% Ingredient.limit(10).order(name: :asc).each do |ingredient| %>
+          <% Ingredient.for_navbar.name_asc.each do |ingredient| %>
             <%= link_to ingredient.name.try(:capitalize), ingredient_path(ingredient), class: "dropdown-item" %>
           <% end %>
 
@@ -62,10 +62,10 @@
 
       <% if chef_signed_in? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle ml-lg-2" href="#" id="navbarDropdownLoggedIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle ml-lg-2" href="#" id="navbar-dropdown-logged-in" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_chef.chefname.capitalize %>'s Profile
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLoggedIn">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-logged-in">
             <%= link_to "View your profile", chef_path(current_chef), class: "dropdown-item" %>
             <%= link_to "Edit your profile", edit_chef_registration_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
@@ -77,6 +77,7 @@
           <%= link_to "Log in", new_chef_session_path, class: "nav-link ml-lg-2" %>
         </li>
       <% end %>
+
     </ul>
   </div>
 </nav>

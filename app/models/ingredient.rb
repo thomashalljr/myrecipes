@@ -8,6 +8,7 @@ class Ingredient < ApplicationRecord
   validates_uniqueness_of :name
 
   scope :name_asc, -> { order("name asc") }
+  scope :for_navbar, -> { limit(10) }
 
   private
 
