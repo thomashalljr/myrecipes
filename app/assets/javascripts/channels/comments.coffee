@@ -10,6 +10,6 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
     comments_heading = $("#comments-heading")[0];
 
     if comments_heading.textContent is "No comments yet!"
-      comments_heading.textContent = "Prior Comments";
+      comments_heading.textContent = "Comments";
 
     $("#comments").prepend(data);

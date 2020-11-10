@@ -1,4 +1,4 @@
-<div class="row comment-fix mb-4">
+<div class="row mb-4">
 
   <div class="col-md-2">
     <section class="chef-info center">
@@ -11,8 +11,8 @@
       <div class="card-body">
         <p class="card-text"><%= comment.description %></p>
         <p class="card-subtitle">
-          <span class="quiet"><small><%= time_ago_in_words(comment.created_at) %> ago by
-          <%= comment.chef.chefname %></small></span>
+          <small><%= time_ago_in_words(comment.created_at) %> ago by
+          <%= comment.chef.chefname %></small>
         </p>
       </div>
     </div>
