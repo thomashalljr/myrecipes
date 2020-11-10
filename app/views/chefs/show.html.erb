@@ -6,10 +6,10 @@
   </div>
 </div>
 
-<% if @chef.recipes.count != 0 %>
+<% if @chef.recipes.count > 0 %>
   <h4 class="center mt-2 mb-4"><%= @chef.chefname %>'s recipes</h4>
 
-  <%= render partial: "recipes/recipe", object: @chef_recipes %>
+  <%= render partial: "recipes/recipes", object: @chef_recipes %>
 
   <%= will_paginate @chef_recipes, list_classes: %w(pagination justify-content-center mt-5) %>
 <% else %>

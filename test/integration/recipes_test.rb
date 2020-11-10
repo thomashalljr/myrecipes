@@ -34,7 +34,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', recipes_path, text: "Return to recipes listing"
   end
 
-  test "create new valid recipe" do
+  test "create valid recipe" do
     sign_in_as(@chef, "password")
     get new_recipe_path
     assert_template 'recipes/new'

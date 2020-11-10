@@ -1,5 +1,5 @@
 <%= render "shared/page_title_without_hr", title: "recipes" %>
 
-<%= render partial: "recipe", object: @recipes, locals: { show_gravatar: true } %>
+<%= render partial: "recipes", object: @recipes, locals: { show_gravatar: true } %>
 
 <%= will_paginate list_classes: %w(pagination justify-content-center mt-5) %>
