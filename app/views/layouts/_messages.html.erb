@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <% flash.each do |name, msg| %>
-    <% next if name == 'timedout' %>
+    <% next if name == "timedout" %>
     <div class="alert alert-center alert-<%= name %>">
-        <a href="#" class="close" data-dismiss="alert">&#215;</a>
-        <%= msg %>
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+      <%= msg %>
     </div>
   <% end %>
 </div>

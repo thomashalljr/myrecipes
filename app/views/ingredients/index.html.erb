@@ -1,6 +1,6 @@
 <%= render "shared/page_title_without_hr", title: "ingredients" %>
 
-<% @ingredients.order(name: :asc).each do |ing| %>
+<% @ingredients.name_asc.each do |ing| %>
 
   <div class="row mb-4">
     <div class="col-md-4 offset-md-4">
