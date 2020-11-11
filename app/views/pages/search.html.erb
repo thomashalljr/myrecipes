@@ -2,11 +2,9 @@
 
 <div class="row">
   <div class="col-sm-6">
-
     <div class="card">
       <div class="card-body">
         <h3>Recipes</h3>
-
         <hr class="my-4" />
 
         <% @recipes.each do |recipe| %>
@@ -16,21 +14,17 @@
         <%= will_paginate @recipes, param_name: "recipes_page", list_classes: %w(pagination justify-content-center mt-5) %>
 
         <% if @recipes.empty? %>
-          <p class="mb-4">We couldn't find any recipes that match your search term.</p>
-
+          <p class="mb-4">We couldn't find any recipes that match your search.</p>
           <%= link_to "Check out the full list of recipes", recipes_path, class: "btn btn-custom btn-custom-primary" %>
         <% end %>
       </div>
     </div>
-
   </div>
 
   <div class="col-sm-6">
-
     <div class="card">
       <div class="card-body">
         <h3>Ingredients</h3>
-
         <hr class="my-4" />
 
         <% @ingredients.each do |ingredient| %>
@@ -40,12 +34,10 @@
         <%= will_paginate @ingredients, param_name: "ingredients_page", list_classes: %w(pagination justify-content-center mt-5) %>
 
         <% if @ingredients.empty? %>
-          <p class="mb-4">We couldn't find any ingredients that match your search term.</p>
-
+          <p class="mb-4">We couldn't find any ingredients that match your search.</p>
           <%= link_to "Check out the full list of ingredients", ingredients_path, class: "btn btn-custom btn-custom-primary" %>
         <% end %>
       </div>
     </div>
-
   </div>
 </div>

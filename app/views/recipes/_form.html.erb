@@ -1,6 +1,6 @@
 <%= render "shared/errors", obj: @recipe %>
 
-<%= form_for(@recipe, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<%= form_for(@recipe, html: {class: "form-horizontal", role: "form"}) do |f| %>
 
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -43,17 +43,14 @@
                   :image,
                   :tags => "MyRecipes_recipe_image",
                   :crop => :fill, :width => 750, :height => 500,
-                  :return_delete_token => true
-                ) %>
+                  :return_delete_token => true) %>
               </div>
               <div>
                 <span class="status"></span>
                 <div class="preview"></div>
               </div>
             </div>
-          <% end %>
-
-          <% if f.object.image? %>
+          <% else %>
             <div class="form-group">
               <%= cl_image_tag(f.object.image, :crop => :limit, :width => 150, :height => 150) %>
               <%= f.label :remove_image %>
@@ -76,89 +73,88 @@
 
 <% end %>
 
-<script>
-  var add_ingredient     = document.getElementById("add-ingredient");
-  var remove_ingredients = document.getElementsByClassName("remove-ingredient");
-
-  function add_field(link, association, content) {
-    var new_id = new Date().getTime();
-    var regexp = new RegExp("new_" + association, "g");
-    $(".ingredients").append(content.replace(regexp, new_id));
-    $(".remove-ingredient:last").on("click", function(e) {
-      e.preventDefault();
-      ( remove_ingredient.bind(this) )();
-    });
-  }
-
-  function remove_ingredient() {
-    $(this).closest(".ingredient").find('input[type="hidden"]').attr("value", "true");
-    $(this).closest(".ingredient").hide();
-  }
-
-  add_ingredient.addEventListener("click", function(e) {
-    e.preventDefault();
-    var link = $(this);
-    var association = $(this).data("association");
-    var content = $(this).data("content");
-    add_field(link, association, content);
-  });
-
-  for (var i = 0; i < remove_ingredients.length; i++) {
-    remove_ingredients[i].addEventListener("click", function(e) {
-      e.preventDefault();
-      ( remove_ingredient.bind(this) )();
-    });
-  }
-</script>
-
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
 
 <script>
-$(function() {
+  $(function() {
+    var add_ingredient     = document.getElementById("add-ingredient");
+    var remove_ingredients = document.getElementsByClassName("remove-ingredient");
 
-  if ($.fn.cloudinary_fileupload !== undefined) {
-    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-  }
-
-  $(".cloudinary-fileupload")
-    .cloudinary_fileupload({
-      dropZone: "#direct_upload",
-      start: function (e) {
-        $(".status").text("Starting upload...");
-      },
-      progress: function (e, data) {
-        $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
-      },
-      fail: function (e, data) {
-        $(".status").text("Upload failed");
-      }
-    })
-    .off("cloudinarydone").on("cloudinarydone", function (e, data) {
-      $(this).hide();
-      $(".cloudinary-choose-file").hide();
-      $(".status").text("");
-      var preview = $(".preview").html('');
-      $.cloudinary.image(data.result.public_id, {
-        format: data.result.format, width: 150, height: 150, crop: "limit"
-      }).appendTo(preview);
-      $('<a/>').
-        addClass('delete_by_token').
-        attr({href: '#'}).
-        data({delete_token: data.result.delete_token}).
-        html('&times;').
-        appendTo(preview).
-        click(function(e) {
-          e.preventDefault();
-          $.cloudinary.delete_by_token($(this).data('delete_token')).done(function(){
-            $('.preview').html('');
-            $('input[name="photo[image]"]').remove();
-            $(".cloudinary-fileupload").show();
-            $(".cloudinary-choose-file").show();
-          }).fail(function() {
-            $('.status').text("Cannot delete image");
-        });
+    function add_field(link, association, content) {
+      var new_id = new Date().getTime();
+      var regexp = new RegExp("new_" + association, "g");
+      $(".ingredients").append(content.replace(regexp, new_id));
+      $(".remove-ingredient:last").on("click", function(e) {
+        e.preventDefault();
+        ( remove_ingredient.bind(this) )();
       });
+    }
+
+    function remove_ingredient() {
+      $(this).closest(".ingredient").find("input[type=\"hidden\"]").attr("value", "true");
+      $(this).closest(".ingredient").hide();
+    }
+
+    add_ingredient.addEventListener("click", function(e) {
+      e.preventDefault();
+      var link = $(this);
+      var association = $(this).data("association");
+      var content = $(this).data("content");
+      add_field(link, association, content);
     });
-});
+
+    for (var i = 0; i < remove_ingredients.length; i++) {
+      remove_ingredients[i].addEventListener("click", function(e) {
+        e.preventDefault();
+        ( remove_ingredient.bind(this) )();
+      });
+    }
+
+    // Cloudinary setup
+
+    if ($.fn.cloudinary_fileupload !== undefined) {
+      $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    }
+
+    $(".cloudinary-fileupload")
+      .cloudinary_fileupload({
+        dropZone: "#direct_upload",
+        start: function(e) {
+          $(".status").text("Starting upload...");
+        },
+        progress: function(e, data) {
+          $(".status").text("Uploading... " + Math.round((data.loaded * 100.0) / data.total) + "%");
+        },
+        fail: function(e, data) {
+          $(".status").text("Upload failed");
+        }
+      })
+      .off("cloudinarydone").on("cloudinarydone", function(e, data) {
+        $(this).hide();
+        $(".cloudinary-choose-file").hide();
+        $(".status").text("");
+        var preview = $(".preview").html("");
+        $.cloudinary.image(data.result.public_id, {
+          format: data.result.format, width: 150, height: 150, crop: "limit"
+        }).appendTo(preview);
+        $("<a/>").
+          addClass("delete_by_token").
+          attr({href: "#"}).
+          data({delete_token: data.result.delete_token}).
+          html("&times;").
+          appendTo(preview).
+          click(function(e) {
+            e.preventDefault();
+            $.cloudinary.delete_by_token($(this).data("delete_token")).done(function() {
+              $(".preview").html("");
+              $("input[name=\"photo[image]\"]").remove();
+              $(".cloudinary-fileupload").show();
+              $(".cloudinary-choose-file").show();
+            }).fail(function() {
+              $(".status").text("Cannot delete image");
+            });
+          });
+      });
+  });
 </script>
