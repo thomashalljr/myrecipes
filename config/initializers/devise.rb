@@ -220,7 +220,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :encryptable
   # Allow you to use another hashing or encryption algorithm besides bcrypt (default).
-  # You can use :sha1, :sha512 or algorithms from others authentication tools as
+  # You can use :sha1, :sha512 or algorithms from other authentication tools as
   # :clearance_sha1, :authlogic_sha512 (then you should set stretches above to 20
   # for default behavior) and :restful_authentication_sha1 (then you should set
   # stretches to 10, and copy REST_AUTH_SITE_KEY to pepper).
@@ -236,7 +236,7 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-  # config.default_scope = :user
+  # config.default_scope = :chef
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
